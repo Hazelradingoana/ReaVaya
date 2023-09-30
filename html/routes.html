@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Fare Calculator</title>
+    <link rel="stylesheet" href="css/map.css">
+</head>
+<body>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBapD7093CKTjNh34l5riysWqfwbW2UwaU&libraries=places"></script>
+
+
+    <h1>Bus fares Calculator</h1>
+
+    <div id="current-location" style="width: 500px;">
+      <label for="current-location">Current location:</label>
+      <input type="text" id="origin-input" placeholder="Enter current location">
+  </div>
+  
+  <div class="destination" style="width: 500px;">
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination-input" placeholder="Enter destination">
+  </div>
+  
+  <div>
+      <button id="calculate-button">Calculate Distance</button>
+  </div>
+  
+  <div>
+      <p>Distance: <span id="distance">N/A</span></p>
+  </div>
+
+    <!-- <div id="current-location" style="width:500px;">
+        <label for="current-location">Current location:</label>
+        <select>
+          <option value="0">Select current location:</option>
+          <option value="1">Ghandi Square</option>
+          <option value="2">Park Station</option>
+          <option value="3">parktown</option>
+          <option value="4">Masharlltown</option>
+        </select>
+      </div>
+
+      <div id="destination" style="width:500px;">
+        <label for="destination"> Destination:</label>
+        <select>
+          <option value="0">Select Destination:</option>
+          <option value="1">Ghandi Square</option>
+          <option value="2">Park Station</option>
+          <option value="3">parktown</option>
+          <option value="4">Masharlltown</option>
+        </select>
+      </div>
+
+      <div> 
+        <button onclick="calculate-button">Calculate Fare</button>
+    </div>
+    
+    <div>
+        <p>Estimated Fare: <span id="fare">N/A</span></p>
+    </div> -->
+    
+      
+
+
+    <script src="js/map.js"></script>
+</body>
+</html>
