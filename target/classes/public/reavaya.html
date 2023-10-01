@@ -30,7 +30,7 @@
                     <div class="logo">
                         <a href="index.html">
                             <img src="/img/reavayalogo.png" alt="Logo">
-    
+
                         </a>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
     <!-- Top Bar End -->
-    
+
     <!-- Nav Bar Start -->
     <div class="nav-bar">
         <div class="container-fluid">
@@ -85,7 +85,7 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-    
+
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
@@ -95,7 +95,7 @@
                                 <a href="reavaya.html" class="dropdown-item">Rea vaya</a>
                                 <a href="gautrain.html" class="dropdown-item">Gautrain</a>
                                 <a href="metrobus.html" class="dropdown-item">Metrobus</a>
-                                <a href="#" class="dropdown-item">Taxi</a>
+                                <a href="putco.html" class="dropdown-item">Putco</a>
                             </div>
                         </div>
                         <a href="wallet.html" class="nav-item nav-link">Wallet</a>
@@ -108,37 +108,110 @@
     </div>
     <!-- Nav Bar End -->
 
+    <style>
+        h1 {
+            color: #333;
+        }
+
+        .location-input {
+            margin: 20px 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 5px;
+            width: 300px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .first-section, .second-section {
+            margin: 35px;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+
     <div>
-        <p>
-            <br          />
-
-            <br      />
-
-            
-
-            <br      />
-        </p>
-    </div>
-
-    <div>
-        <p>
-            Traveling with Rea Vaya made seamless through the provisioning of bus routes near you and your 
-            destination as well as the corresponding trip-cost estimation. 
+        <p class="first-section">
+            Traveling with Rea Vaya made seamless through the provisioning of bus routes near you and your
+            destination as well as the corresponding trip-cost estimation.
         </p>
         <br/>
 
-        <p>Ability to track current state of travel (checked-in/out) and prevent unfortunate costs. 
+        <p class="second-section">Ability to track current state of travel (checked-in/out) and prevent unfortunate costs.
             And seamless payment integration upon checking-out.</p>
 
-            <div>
-                <p>
-                    <br          />
-                </p>
-            </div>
+        <h4>Cost-Estimation Calculator: </h4>
 
-        <h4>Cost-Estimation Calculator:  (Placeholder)</h4>
+        <!-- Start Remittance calculator  -->
+
+        <div>
+            <label for="startLocation">Start Location:</label>
+            <input type="text" id="startLocation" placeholder="Enter start location">
+        </div>
+        <div>
+            <label for="endLocation">End Location:</label>
+            <input type="text" id="endLocation" placeholder="Enter end location">
+        </div>
+        <button id="calculateDistance">Calculate Distance</button>
+        <p id="distanceResult"></p>
+
+        <!-- End Remittance calculator   -->
+
     </div>
 
+    <script href="https://maps.googleapis.com/maps/api/js?key=AIzaSyBapD7093CKTjNh34l5riysWqfwbW2UwaU&libraries=places">
+        // Initialize the Places service
+        const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+
+        // Add an event listener to the Calculate Distance button
+        document.getElementById('calculateDistance').addEventListener('click', () => {
+            const startLocation = document.getElementById('startLocation').value;
+            const endLocation = document.getElementById('endLocation').value;
+
+            // Use the Places service to get place details
+            placesService.textSearch({ query: startLocation }, (startResults, startStatus) => {
+                if (startStatus === google.maps.places.PlacesServiceStatus.OK && startResults[0]) {
+                    const startPlace = startResults[0].geometry.location;
+
+                    placesService.textSearch({ query: endLocation }, (endResults, endStatus) => {
+                        if (endStatus === google.maps.places.PlacesServiceStatus.OK && endResults[0]) {
+                            const endPlace = endResults[0].geometry.location;
+
+                            // Calculate the distance using the Geometry library
+                            const distance = google.maps.geometry.spherical.computeDistanceBetween(startPlace, endPlace) / 1000; // in kilometers
+
+                            document.getElementById('distanceResult').textContent = `Distance: ${distance.toFixed(2)} km`;
+                        } else {
+                            alert('Unable to determine end location: ' + endStatus);
+                        }
+                    });
+                } else {
+                    alert('Unable to determine start location: ' + startStatus);
+                }
+            });
+        });
+
+    </script>
 
 
     <!-- JavaScript Libraries -->
@@ -152,7 +225,7 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/slick/slick.min.js"></script>
-    
+
     <script src="/js/script.js"></script>
 </body>
 
