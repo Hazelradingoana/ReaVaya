@@ -130,13 +130,24 @@
         <p>Ability to track current state of travel (checked-in/out) and prevent unfortunate costs. 
             And seamless payment integration upon checking-out.</p>
 
+        <div>
+                <label for="start-location">Start Location:</label>
+                <input type="text" id="start-location" placeholder="Enter start location">
+            </div>
+        
             <div>
-                <p>
-                    <br          />
-                </p>
+                <label for="end-location">End Location:</label>
+                <input type="text" id="end-location" placeholder="Enter end location">
+            </div>
+        
+            <button id="calculate-button">Calculate Distance</button>
+        
+            <div id="map"></div>
+        
+            <div>
+                <p>Distance: <span id="distance">N/A</span> km</p>
             </div>
 
-        <h4>Cost-Estimation Calculator:  (Placeholder)</h4>
     </div>
 
 
