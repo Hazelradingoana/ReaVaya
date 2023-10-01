@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link href="img/reavalogo.png" rel="icon">
+    <link href="img/reavayalogo.png" rel="icon">
 
     <title>Reavaya</title>
     <link rel="stylesheet" href="/css/style.css">
@@ -30,7 +30,7 @@
                     <div class="logo">
                         <a href="index.html">
                             <img src="/img/reavayalogo.png" alt="Logo">
-
+    
                         </a>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
     <!-- Top Bar End -->
-
+    
     <!-- Nav Bar Start -->
     <div class="nav-bar">
         <div class="container-fluid">
@@ -100,7 +100,9 @@
                         </div>
                         <a href="wallet.html" class="nav-item nav-link">Wallet</a>
                         <a href="contact.html" class="nav-item nav-link">Help</a>
+                        <a href="registration.html" class="nav-item nav-link">Register</a>
                         <a href="#" class="nav-item nav-link">logout</a>
+
                     </div>
                 </div>
             </nav>
@@ -112,20 +114,20 @@
         h1 {
             color: #333;
         }
-
+​
         .location-input {
             margin: 20px 0;
         }
-
+​
         label {
             font-weight: bold;
         }
-
+​
         input {
             padding: 5px;
             width: 300px;
         }
-
+​
         button {
             background-color: #007bff;
             color: white;
@@ -133,75 +135,63 @@
             border: none;
             cursor: pointer;
         }
-
+​
         button:hover {
             background-color: #0056b3;
         }
-
+​
         #result {
             font-weight: bold;
             margin-top: 20px;
         }
-
+​
         .first-section, .second-section {
-            margin: 35px;
+            margin: 45px;
             text-align: center;
-            padding: 15px;
+            padding: 45px;
         }
     </style>
 
+    <br />
+
+    <br />
+​
     <div>
         <p class="first-section">
             Traveling with Rea Vaya made seamless through the provisioning of bus routes near you and your
             destination as well as the corresponding trip-cost estimation.
         </p>
         <br/>
-
+​
         <p class="second-section">Ability to track current state of travel (checked-in/out) and prevent unfortunate costs.
             And seamless payment integration upon checking-out.</p>
-
+​
+        <h4>Cost-Estimation Calculator: </h4>
+​
+        <div class="calculator">
+            <h1>Distance Calculator</h1>
+        
             <div>
-                <p>
-                    <br          />
-                </p>
+                <label for="start-location">Start Location:</label>
+                <input type="text" id="start-location" placeholder="Enter start location">
             </div>
-
-        <h4>Cost-Estimation Calculator:  (Placeholder)</h4>
-
-    <script href="https://maps.googleapis.com/maps/api/js?key=AIzaSyBapD7093CKTjNh34l5riysWqfwbW2UwaU&libraries=places">
-        // Initialize the Places service
-        const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-
-        // Add an event listener to the Calculate Distance button
-        document.getElementById('calculateDistance').addEventListener('click', () => {
-            const startLocation = document.getElementById('startLocation').value;
-            const endLocation = document.getElementById('endLocation').value;
-
-            // Use the Places service to get place details
-            placesService.textSearch({ query: startLocation }, (startResults, startStatus) => {
-                if (startStatus === google.maps.places.PlacesServiceStatus.OK && startResults[0]) {
-                    const startPlace = startResults[0].geometry.location;
-
-                    placesService.textSearch({ query: endLocation }, (endResults, endStatus) => {
-                        if (endStatus === google.maps.places.PlacesServiceStatus.OK && endResults[0]) {
-                            const endPlace = endResults[0].geometry.location;
-
-                            // Calculate the distance using the Geometry library
-                            const distance = google.maps.geometry.spherical.computeDistanceBetween(startPlace, endPlace) / 1000; // in kilometers
-
-                            document.getElementById('distanceResult').textContent = `Distance: ${distance.toFixed(2)} km`;
-                        } else {
-                            alert('Unable to determine end location: ' + endStatus);
-                        }
-                    });
-                } else {
-                    alert('Unable to determine start location: ' + startStatus);
-                }
-            });
-        });
-
-    </script>
-
+        
+            <div>
+                <label for="end-location">End Location:</label>
+                <input type="text" id="end-location" placeholder="Enter end location">
+            </div>
+        
+            <button id="calculate-button">Calculate Distance</button>
+        
+            <div id="map"></div>
+        
+            <div>
+                <p>Distance: <span id="distance">N/A</span> km</p>
+            </div>
+            
+        </div>
+        
+        <script src="js/route.js"></script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -214,7 +204,7 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/slick/slick.min.js"></script>
-
+    
     <script src="/js/script.js"></script>
 </body>
 

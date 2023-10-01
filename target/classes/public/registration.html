@@ -42,6 +42,7 @@
            background-color: white;
            align-items: center;
            display: flex;
+           
        }
 
         form{
@@ -194,7 +195,7 @@
                                 <a href="reavaya.html" class="dropdown-item">Rea vaya</a>
                                 <a href="gautrain.html" class="dropdown-item">Gautrain</a>
                                 <a href="metrobus.html" class="dropdown-item">Metrobus</a>
-                                <a href="putco.html" class="dropdown-item">Taxi</a>
+                                <a href="putco.html" class="dropdown-item">Putco</a>
                             </div>
                         </div>
                         <a href="wallet.html" class="nav-item nav-link">Wallet</a>
@@ -211,7 +212,7 @@
 
     <h1>Create an account</h1>
 
-    <form>
+    <form method="POST" action="http://localhost:5050/api/register">
         <label for="first-name">First name:</label>
         <input type="text" id="first-name"name="first-name" placeholder="Reratilwe" required pattern="[A-Za-z]+" title="Please enter letters only">
         <br>
