@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Calculator</title>
+    <script href="https://maps.googleapis.com/maps/api/js?key=AIzaSyBapD7093CKTjNh34l5riysWqfwbW2UwaU&libraries=places"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Distance Calculator</h1>
+
+    <div>
+        <label for="start-location">Start Location:</label>
+        <input type="text" id="start-location" placeholder="Enter start location">
+    </div>
+
+    <div>
+        <label for="end-location">End Location:</label>
+        <input type="text" id="end-location" placeholder="Enter end location">
+    </div>
+
+    <button id="calculate-button">Calculate Distance</button>
+
+    <div id="map"></div>
+
+    <div>
+        <p>Distance: <span id="distance">N/A</span> km</p>
+    </div>
+
+    <script src="js/route.js"></script>
+</body>
+</html>

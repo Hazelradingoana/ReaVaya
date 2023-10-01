@@ -1,4 +1,4 @@
-package database_layer;
+package org.example.database_layer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
